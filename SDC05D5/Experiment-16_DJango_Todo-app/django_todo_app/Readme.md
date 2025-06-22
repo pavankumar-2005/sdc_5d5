@@ -81,5 +81,9 @@ Contributing
 Feel free to fork this repository and suggest improvements via pull requests. All contributions are welcome!
 
 Author
+<<<<<<< HEAD
 •pavankumar
 ![alt text](image.png)
+=======
+•tarunteja
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88

@@ -57,4 +57,7 @@ http://localhost:3000
 
 LICENSE
 This project is licensed under the MIT License.
+<<<<<<< HEAD
 ![alt text](image.png)
+=======
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88

@@ -38,5 +38,9 @@ Client-side validation ensures that form inputs meet the required format before 
 The validation logic is implemented using JavaScript. The registration form ensures valid inputs before submission, while the shopping cart checks item quantities and updates the total price accordingly.
 
 7. License
+<<<<<<< HEAD
 This project is open-source and free to use.
 ![alt text](image.png)
+=======
+This project is open-source and free to use.
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88

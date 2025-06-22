@@ -71,9 +71,13 @@ License
 This project is open-source and available under the MIT License
 
 Author
+<<<<<<< HEAD
 •pavankumar
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
 ![alt text](image-4.png)
+=======
+•tarunteja
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88

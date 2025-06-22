@@ -70,5 +70,8 @@ Author
 
 Contributing
 Feel free to fork this repository and suggest improvements via pull requests. All contributions are welcome!
+<<<<<<< HEAD
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+=======
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88

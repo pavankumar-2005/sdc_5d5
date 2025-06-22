@@ -64,6 +64,7 @@ LICENSE
 This project is open-source and available under the MIT License
 
 Author
+<<<<<<< HEAD
 pavankumar
 
 Contributing
@@ -72,3 +73,9 @@ Feel free to fork this repository and suggest improvements via pull requests. Al
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
+=======
+•tarunteja
+
+Contributing
+Feel free to fork this repository and suggest improvements via pull requests. All contributions are welcome!
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88

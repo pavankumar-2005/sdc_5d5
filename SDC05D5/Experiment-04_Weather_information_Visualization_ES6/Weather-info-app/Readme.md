@@ -48,5 +48,9 @@ This project is licensed under the MIT License.
 Author
 •tarunteja
 •GitHub: Your GitHub Profile
+<<<<<<< HEAD
 Feel free to contribute or suggest improvements!
 ![alt text](image.png)
+=======
+Feel free to contribute or suggest improvements!
+>>>>>>> 6ebb647da10bf7d46a467a21fc35beba04beec88
