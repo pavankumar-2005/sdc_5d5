@@ -50,3 +50,18 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t apigw-test:${{ github.sha }} \
+            -t apigw-test:latest \
+            -f codex/upsk-system-design-workspace/api/Dockerfile \
+            codex/upsk-system-design-workspace/api
