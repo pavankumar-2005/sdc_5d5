@@ -19,7 +19,6 @@ function getLogLevels(logLevel = 'info'): LogLevel[] {
 
 async function bootstrap() {
   dotenv.config();
-  const unusedVar = 'eslint-break';
 
   const port = Number(process.env.PORT);
   if (!Number.isInteger(port) || port < 1 || port > 65535) {
