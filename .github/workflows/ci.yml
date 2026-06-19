@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -60,8 +64,22 @@ jobs:
 
       - name: Build Docker image
         run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository }}/apigw-test
+          IMAGE_NAME_LOWER=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
           docker build \
-            -t apigw-test:${{ github.sha }} \
-            -t apigw-test:latest \
+            -t $IMAGE_NAME_LOWER:${{ github.sha }} \
+            -t $IMAGE_NAME_LOWER:latest \
             -f codex/upsk-system-design-workspace/api/Dockerfile \
             codex/upsk-system-design-workspace/api
+
+      - name: Log in to GitHub Container Registry
+        if: github.ref == 'refs/heads/main'
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push Docker image
+        if: github.ref == 'refs/heads/main'
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository }}/apigw-test
+          IMAGE_NAME_LOWER=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
+          docker push $IMAGE_NAME_LOWER:${{ github.sha }}
+          docker push $IMAGE_NAME_LOWER:latest
