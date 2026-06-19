@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+server.err.log
+server.out.log
+server.final.err.log
+server.final.out.log
+server.fix.err.log
+server.fix.out.log

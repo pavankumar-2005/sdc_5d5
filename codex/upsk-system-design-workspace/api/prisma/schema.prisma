@@ -1,0 +1,79 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Link {
+  id          String       @id @default(uuid())
+  code        String       @unique
+  longUrl     String       @map("long_url")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  createdBy   String       @map("created_by")
+  expiresAt   DateTime?    @map("expires_at")
+  tags        String[]
+  clickEvents ClickEvent[]
+
+  @@index([createdBy])
+  @@map("links")
+}
+
+model ClickEvent {
+  id        String   @id @default(uuid())
+  linkId    String   @map("link_id")
+  clickedAt DateTime @default(now()) @map("clicked_at")
+  userAgent String   @map("user_agent")
+  referrer  String
+  ipHash    String   @map("ip_hash")
+  link      Link     @relation(fields: [linkId], references: [id], onDelete: Cascade)
+
+  @@index([linkId, clickedAt])
+  @@map("click_events")
+}
+
+model Analytics {
+  id              String   @id @default(uuid())
+  linkId          String   @map("link_id")
+  timestampBucket DateTime @map("timestamp_bucket")
+  count           Int      @default(1)
+  lastAccessedAt  DateTime @default(now()) @updatedAt @map("last_accessed_at")
+
+  @@unique([linkId, timestampBucket], name: "analytics_link_id_bucket_unique")
+  @@map("analytics")
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model TeamInvitation {
+  id           String           @id @default(cuid())
+  teamId       String           @map("team_id")
+  inviterId    String           @map("inviter_id")
+  inviteeEmail String           @map("invitee_email")
+  status       InvitationStatus @default(PENDING)
+  expiresAt    DateTime         @map("expires_at")
+  team         Team             @relation(fields: [teamId], references: [id])
+  inviter      User             @relation(fields: [inviterId], references: [id])
+
+  @@map("team_invitations")
+}
+
+model Team {
+  id          String           @id @default(uuid())
+  invitations TeamInvitation[]
+
+  @@map("teams")
+}
+
+model User {
+  id          String           @id @default(uuid())
+  invitations TeamInvitation[]
+
+  @@map("users")
+}
