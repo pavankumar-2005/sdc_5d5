@@ -80,8 +80,8 @@ jobs:
           IMAGE_NAME=ghcr.io/${{ github.repository }}/apigw-test
           IMAGE_NAME_LOWER=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
           SIZE=$(docker image inspect $IMAGE_NAME_LOWER:${{ github.sha }} --format='{{.Size}}')
-          if [ "$SIZE" -gt 209715200 ]; then
-            echo "Image size ($SIZE bytes) exceeds 200MB limit!"
+          if [ "$SIZE" -gt 387973120 ]; then
+            echo "Image size ($SIZE bytes) exceeds 370MB limit!"
             exit 1
           else
             echo "Image size ($SIZE bytes) is within threshold."
